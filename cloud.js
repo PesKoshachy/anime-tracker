@@ -61,7 +61,7 @@
   async function refresh(force=false) {
     if(!user || !ready || sending || transition || wheelSpinning) return;
     if(pending && !force) { await flush(); return; }
-    if((editingId || active || document.activeElement?.closest('#titleForm')) && !force) return;
+    if((editingId || active || document.activeElement?.closest('#titleForm') || $('formName')?.value.trim()) && !force) return;
     const ticket=generation;
     try {
       const row=await fetchRow(); if(ticket!==generation)return;
